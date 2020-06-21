@@ -8,7 +8,7 @@
     {% for user in user_list %}
 
         <li>
-            {{user}}
+            <a href="{% url 'posts-of-author' user.pk %}">{{user}}</a>
         </li>
 
     {% endfor %}

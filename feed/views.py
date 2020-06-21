@@ -22,3 +22,11 @@ class PostDetailView(generic.DetailView):
 class AuthorListView(generic.ListView):
     """This class allows to get a list of authors """
     model = User
+
+
+def posts_of_user(request, pk):
+    posts_of_user = Post.objects.filter(author=User.objects.get(pk=pk))
+    context = {
+        "posts": posts_of_user,
+    }
+    return render(request, 'feed/posts_of_user.html', context)
