@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>All posts</h1>
+
+    {% if post_list %}
+
+    <ui>
+        {% for post in post_list %}
+            <li>
+                {{ post.name }}
+            </li>
+        {% endfor %}
+    </ui>
+
+    {% endif %}
+
+{% endblock %}
