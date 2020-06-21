@@ -8,5 +8,11 @@ from django.views import generic
 
 
 class PostsListView(generic.ListView):
+    """Generic class based list of posts view"""
     model = Post
     paginate_by = 10
+
+
+class PostDetailView(generic.DetailView):
+    """Generic class based detail view of post"""
+    model = Post

@@ -9,7 +9,7 @@
     <ui>
         {% for post in post_list %}
             <li>
-                {{ post.name }}
+                <a href="{% url 'post-detail' post.pk %}"> {{ post.name }} </a>
             </li>
         {% endfor %}
     </ui>
