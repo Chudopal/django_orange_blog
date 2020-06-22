@@ -10,7 +10,7 @@
     </p>
 
     <h3>
-        {{ post.author }}
+        <a href="{% url 'posts-of-author' post.author.pk %}">{{ post.author }}</a>
     </h3>
 
 {% endblock %}

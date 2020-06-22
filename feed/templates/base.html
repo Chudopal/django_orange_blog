@@ -22,6 +22,17 @@
     <li><a href="{% url 'list-of-posts' %}">All posts</a></li>
     <li><a href="{% url 'list-of-authors' %}">All authors</a></li>
   </ul>
+
+  <ul class="sidebar-nav">
+    {% if user.is_authenticated %}
+    <li>User: {{ user.get_username }}</li>
+    <li>My posts</li>
+    <li>New post</li>
+    <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>   
+  {% else %}
+    <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>   
+  {% endif %} 
+  </ul>
    
 {% endblock %}
   </div>
