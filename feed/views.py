@@ -50,3 +50,12 @@ class DeletePost(DeleteView):
     """This is a delete post view"""
     model = Post
     success_url = reverse_lazy('list-of-posts') 
+
+
+def my_posts(request, pk):
+    """This function is for showing your posts"""
+    posts_of_user = Post.objects.filter(author=User.objects.get(pk=pk))
+    context = {
+        "posts": posts_of_user, 
+    }
+    return render(request, "feed/my_posts.html", context)
