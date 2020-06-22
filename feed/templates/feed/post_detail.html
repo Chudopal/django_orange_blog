@@ -13,4 +13,15 @@
         <a href="{% url 'posts-of-author' post.author.pk %}">{{ post.author }}</a>
     </h3>
 
+    <ul>
+        {% for comment in post.comment %}
+
+         <li>
+            <h4>{{comment.outhor}}</h4>
+            <p>{{comment.body}}</p> 
+         </li>    
+
+        {% endfor %}
+    </ul>
+
 {% endblock %}
