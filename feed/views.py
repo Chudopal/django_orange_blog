@@ -5,6 +5,8 @@ from .models import (
 )
 from django.contrib.auth.models import User
 from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 # Create your views here.
 
 
@@ -30,3 +32,21 @@ def posts_of_user(request, pk):
         "posts": posts_of_user,
     }
     return render(request, 'feed/posts_of_user.html', context)
+
+
+class CreatePost(CreateView):
+    """This class allows to create new post"""
+    model = Post
+    fitlds = '__all__'
+
+
+class UpdatePost(UpdateView):
+    """This class allows to update your post"""
+    model = Post
+    fields = "body"
+
+
+class DeletePost(DeleteView):
+    """This is a delete post view"""
+    model = Post
+    success_url = reverse_lazy('list-of-posts') 
