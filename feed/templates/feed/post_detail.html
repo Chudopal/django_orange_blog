@@ -14,10 +14,10 @@
     </h3>
 
     <ul>
-        {% for comment in post.comment %}
+        {% for comment in post.comments.all %}
 
          <li>
-            <h4>{{comment.outhor}}</h4>
+            <h4>{{comment.author}}</h4>
             <p>{{comment.body}}</p> 
          </li>    
 
