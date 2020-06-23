@@ -8,6 +8,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 
@@ -38,7 +39,17 @@ def posts_of_user(request, pk):
 class CreatePost(LoginRequiredMixin, CreateView):
     """This class allows to create new post"""
     model = Post
-    fields = '__all__'
+    fields = [
+        'name',
+        'body',
+    ]
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.author = self.request.user
+        obj.likes = 0
+        obj.save()
+        return super(CreatePost, self).form_valid(form)
 
 
 class UpdatePost(LoginRequiredMixin, UpdateView):
