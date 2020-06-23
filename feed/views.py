@@ -39,14 +39,14 @@ class CreatePost(PermissionRequiredMixin, CreateView):
     """This class allows to create new post"""
     model = Post
     fields = '__all__'
-    permission_required = 'feed.can_mark_returned'
+    permission_required = 'a'
 
 
 class UpdatePost(PermissionRequiredMixin, UpdateView):
     """This class allows to update your post"""
     model = Post
     fields = "body"
-    permission_required = 'feed.can_mark_returned'
+    permission_required = None
 
 
 class DeletePost(PermissionRequiredMixin, DeleteView):
