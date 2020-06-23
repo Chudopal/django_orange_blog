@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -35,25 +35,22 @@ def posts_of_user(request, pk):
     return render(request, 'feed/posts_of_user.html', context)
 
 
-class CreatePost(PermissionRequiredMixin, CreateView):
+class CreatePost(LoginRequiredMixin, CreateView):
     """This class allows to create new post"""
     model = Post
     fields = '__all__'
-    permission_required = 'a'
 
 
-class UpdatePost(PermissionRequiredMixin, UpdateView):
+class UpdatePost(LoginRequiredMixin, UpdateView):
     """This class allows to update your post"""
     model = Post
     fields = "body"
-    permission_required = None
 
 
-class DeletePost(PermissionRequiredMixin, DeleteView):
+class DeletePost(LoginRequiredMixin, DeleteView):
     """This is a delete post view"""
     model = Post
     success_url = reverse_lazy('list-of-posts') 
-    permission_required = 'feed.can_mark_returned'
 
 
 def my_posts(request, pk):
