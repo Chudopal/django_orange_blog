@@ -2,7 +2,10 @@ from django.shortcuts import render
 from .models import (
     Post,
     Comment
+    
 )
+from django.contrib.auth.decorators import login_required
+from .forms import CommentForm
 from django.contrib.auth.models import User
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -18,9 +21,43 @@ class PostsListView(generic.ListView):
     paginate_by = 10
 
 
-class PostDetailView(generic.DetailView):
+'''class CreateComment(LoginRequiredMixin, CreateView):
+    """This class allows to create new post"""
+    model = Comment
+    fields = [
+        'body',
+    ]
+
+    template_name = 'feed/post_detail.html'
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.author = self.request.userE
+        obj.save()
+        return super(CreatePost, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.all(pk=self.request.object.pk)
+        return context
+'''
+
+'''class PostDetailView(generic.DetailView):
     """Generic class based detail view of post"""
     model = Post
+'''
+
+
+@login_required
+def post_detail_view(request, pk):
+    context = {}
+    form = CommentForm(request.POST or None) 
+    if form.is_valid(): 
+        form.save()
+
+    context['form'] = form 
+    context['post'] = Post.objects.get(pk=pk)
+    return render(request, 'feed/post_detail.html', context)
 
 
 class AuthorListView(generic.ListView):
@@ -71,3 +108,5 @@ def my_posts(request, pk):
         "posts": posts_of_user, 
     }
     return render(request, "feed/my_posts.html", context)
+
+
