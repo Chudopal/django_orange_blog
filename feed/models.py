@@ -54,6 +54,8 @@ class Comment(models.Model):
     )
     author = models.ForeignKey(
         User,
+        blank=True,
+        null=True,
         on_delete=models.CASCADE
     )
     date = models.DateField(

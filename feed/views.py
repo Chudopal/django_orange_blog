@@ -21,33 +21,6 @@ class PostsListView(generic.ListView):
     paginate_by = 10
 
 
-'''class CreateComment(LoginRequiredMixin, CreateView):
-    """This class allows to create new post"""
-    model = Comment
-    fields = [
-        'body',
-    ]
-
-    template_name = 'feed/post_detail.html'
-
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.author = self.request.userE
-        obj.save()
-        return super(CreatePost, self).form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.all(pk=self.request.object.pk)
-        return context
-'''
-
-'''class PostDetailView(generic.DetailView):
-    """Generic class based detail view of post"""
-    model = Post
-'''
-
-
 @login_required
 def post_detail_view(request, pk):
     context = {}
@@ -55,14 +28,15 @@ def post_detail_view(request, pk):
     if form.is_valid(): 
         form.save()
 
+    comment = form.save(commit=False)
+    comment.author = request.user
+    comment.save()
+    post = Post.objects.get(pk=pk)
+    post.comments.add(comment)
+
     context['form'] = form 
-    context['post'] = Post.objects.get(pk=pk)
+    context['post'] = post
     return render(request, 'feed/post_detail.html', context)
-
-
-class AuthorListView(generic.ListView):
-    """This class allows to get a list of authors """
-    model = User
 
 
 def posts_of_user(request, pk):
@@ -71,6 +45,11 @@ def posts_of_user(request, pk):
         "posts": posts_of_user,
     }
     return render(request, 'feed/posts_of_user.html', context)
+
+
+class AuthorListView(generic.ListView):
+    """This class allows to get a list of authors """
+    model = User
 
 
 class CreatePost(LoginRequiredMixin, CreateView):
