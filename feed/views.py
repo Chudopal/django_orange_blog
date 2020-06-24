@@ -24,18 +24,18 @@ class PostsListView(generic.ListView):
 @login_required
 def post_detail_view(request, pk):
     context = {}
+
     form = CommentForm(request.POST or None) 
-    if form.is_valid(): 
-        form.save()
-
-    comment = form.save(commit=False)
-    comment.author = request.user
-    comment.save()
     post = Post.objects.get(pk=pk)
-    post.comments.add(comment)
+    
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.author = request.user
+        comment.save()
+        post.comments.add(comment)
 
-    context['form'] = form 
     context['post'] = post
+    context['form'] = form 
     return render(request, 'feed/post_detail.html', context)
 
 
