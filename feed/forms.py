@@ -1,14 +1,11 @@
 
 from django import forms 
-from .models import Comment 
+from .models import Comment, Like
   
   
 # creating a form 
 class CommentForm(forms.ModelForm): 
   
-    def __init__(self, *args, **kwargs):
-        super(CommentForm, self).__init__(*args, **kwargs)
-
     # create meta class 
     class Meta: 
         # specify model to be used 
@@ -18,3 +15,13 @@ class CommentForm(forms.ModelForm):
         fields = [ 
             'body',
         ] 
+
+
+class LikeForm(forms.ModelForm):
+    
+    class Meta:
+        model = Like
+
+        fields = [
+            'is_like',
+        ]

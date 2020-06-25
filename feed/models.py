@@ -29,10 +29,9 @@ class Post(models.Model):
         'Comment',
         blank=True
     )
-    likes = models.ForeignKey(
+    likes = models.ManyToManyField(
         "Like",
-        blank=True,
-        on_delete=models.CASCADE
+        blank=True
     )
     date = models.DateField(auto_now=True)
 
