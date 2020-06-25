@@ -29,7 +29,11 @@ class Post(models.Model):
         'Comment',
         blank=True
     )
-    likes = models.IntegerField()
+    likes = models.ForeignKey(
+        "Like",
+        blank=True,
+        on_delete=models.CASCADE
+    )
     date = models.DateField(auto_now=True)
 
     def get_absolute_url(self):
@@ -69,3 +73,15 @@ class Comment(models.Model):
     
     def __str__(self):
         return self.body    
+
+
+class Like(models.Model):
+    """The class for likes. Users can likes posts"""
+
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.author
