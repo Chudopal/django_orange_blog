@@ -83,5 +83,9 @@ class Like(models.Model):
         on_delete=models.CASCADE
     )
 
+    is_like = models.BooleanField(
+        blank=True,
+    )
+
     def __str__(self):
         return self.author
