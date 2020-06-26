@@ -51,6 +51,12 @@ class Comment(models.Model):
     author -- the user, who wrote the comment,
     date -- the date of creating the comment
     """
+
+    likes = = models.ManyToManyField(
+        "Like",
+        blank=True
+    )
+
     body = models.TextField(
         max_length=500,
         help_text="Enter the content of your comment"
@@ -82,8 +88,18 @@ class Like(models.Model):
         on_delete=models.CASCADE
     )
 
-    is_like = models.BooleanField(
+    post = models.ForeignKey(
+        Post,
+        null=True,
         blank=True,
+        on_delete=models.CASCADE
+    )
+
+    comment = models.ForeignKey(
+        Comment,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE
     )
 
     def __str__(self):
