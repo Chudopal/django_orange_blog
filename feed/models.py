@@ -17,22 +17,27 @@ class Post(models.Model):
         max_length=100,
         help_text="Enter the name of your post"
     )
+
     body = models.TextField(
         max_length=2000,
         help_text="Enter the content of your post"
     )
+
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE
     )
+
     comments = models.ManyToManyField(
         'Comment',
         blank=True
     )
+
     likes = models.ManyToManyField(
-        "Like",
+        'Like',
         blank=True
     )
+
     date = models.DateField(auto_now=True)
 
     def get_absolute_url(self):
@@ -52,7 +57,7 @@ class Comment(models.Model):
     date -- the date of creating the comment
     """
 
-    likes = = models.ManyToManyField(
+    likes = models.ManyToManyField(
         "Like",
         blank=True
     )
@@ -61,23 +66,27 @@ class Comment(models.Model):
         max_length=500,
         help_text="Enter the content of your comment"
     )
+
     author = models.ForeignKey(
         User,
         blank=True,
         null=True,
         on_delete=models.CASCADE
     )
+
     date = models.DateField(
         auto_now=True
     )
-    class Meta():
-        ordering = ["date"]
 
     def get_absolute_url(self):
         return reverse("comment-detail", kwargs={"pk": self.pk})
     
     def __str__(self):
-        return self.body    
+        return self.body   
+        
+    class Meta():
+        ordering = ["date"]
+ 
 
 
 class Like(models.Model):
@@ -85,20 +94,8 @@ class Like(models.Model):
 
     author = models.ForeignKey(
         User,
-        on_delete=models.CASCADE
-    )
-
-    post = models.ForeignKey(
-        Post,
-        null=True,
         blank=True,
-        on_delete=models.CASCADE
-    )
-
-    comment = models.ForeignKey(
-        Comment,
         null=True,
-        blank=True,
         on_delete=models.CASCADE
     )
 

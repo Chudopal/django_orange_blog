@@ -5,7 +5,7 @@ from .models import (
     
 )
 from django.contrib.auth.decorators import login_required
-from .forms import CommentForm, LikeForm
+from .forms import CommentForm
 from django.contrib.auth.models import User
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -25,25 +25,17 @@ class PostsListView(generic.ListView):
 def post_detail_view(request, pk):
     context = {}
 
-    form_comment = CommentForm(request.POST or None) 
-    form_like = LikeForm(request.POST or None)
+    form_comment = CommentForm(request.POST or None)
     post = Post.objects.get(pk=pk)
-    
+
     if form_comment.is_valid():
         comment = form_comment.save(commit=False)
         comment.author = request.user
         comment.save()
         post.comments.add(comment)
-
-    if form_like.is_valid():
-        like = form_like.save(commit=False)
-        like.author = request.user
-        like.save()
-        post.likes.add(like)
-
+    
     context['post'] = post
     context['form_comment'] = form_comment
-    context['like_form'] = form_like
     return render(request, 'feed/post_detail.html', context)
 
 
@@ -71,7 +63,6 @@ class CreatePost(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         obj = form.save(commit=False)
         obj.author = self.request.user
-        obj.likes = 0
         obj.save()
         return super(CreatePost, self).form_valid(form)
 
