@@ -36,10 +36,15 @@ def post_detail_view(request, pk):
         post.comments.add(comment)
 
     if form_like.is_valid():
+
         like = form_like.save(commit=False)
-        like.author = request.user
-        like.save()
-        post.likes.add(like)
+        like.author = request.user        
+
+        if (post.likes.filter(author=like.author).exists()):
+            post.likes.filter(author=like.author).delete()
+        else:
+            like.save()
+            post.likes.add(like)
 
     context['post'] = post
     context['form_comment'] = form_comment
