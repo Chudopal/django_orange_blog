@@ -1,6 +1,6 @@
 
 from django import forms 
-from .models import Comment
+from .models import Comment, Like
   
   
 # creating a form 
@@ -15,3 +15,11 @@ class CommentForm(forms.ModelForm):
         fields = [ 
             'body',
         ]
+
+
+class LikeForm(forms.ModelForm):
+
+    class Meta:
+        model = Like
+
+        fields = []

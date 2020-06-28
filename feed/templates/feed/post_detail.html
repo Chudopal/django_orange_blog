@@ -6,6 +6,18 @@
 
     <h4> Likes: {%if post.likes_set%} {{post.likes_set.count}} {%else%} 0 {%endif%} </h4>
 
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form_like.as_table }}
+        </table>
+        <input type="submit" value="Like" />
+    
+    </form>
+
+
+
     <p>
         {{ post.body }}
 
