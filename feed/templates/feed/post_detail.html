@@ -4,7 +4,7 @@
 
     <h1> {{ post.name }} </h1>
 
-    <h4> Likes: {%if post.likes_set%} {{post.likes_set.count}} {%else%} 0 {%endif%} </h4>
+    <h4> Likes: {%if post.likes%} {{post.likes.all.count}} {%else%} 0 {%endif%} </h4>
 
 
     <form action="" method="post">
