@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user_list %}
+
+<ul>
+    {% for user in user_list %}
+
+        <li>
+            <a href="{% url 'posts-of-author' user.pk %}">{{user}}</a>
+        </li>
+
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+{% endblock %}
