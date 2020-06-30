@@ -7,3 +7,5 @@
 
 #Database
 *.sqlite3
+
+/Blog/blog/files
