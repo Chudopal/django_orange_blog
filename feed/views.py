@@ -28,7 +28,6 @@ def post_detail_view(request, pk):
     form_comment = CommentForm(request.POST or None)
     form_like = LikeForm(request.POST or None)
     post = Post.objects.get(pk=pk)
-
     if form_comment.is_valid():
         comment = form_comment.save(commit=False)
         comment.author = request.user
@@ -36,7 +35,6 @@ def post_detail_view(request, pk):
         post.comments.add(comment)
 
     if form_like.is_valid():
-
         like = form_like.save(commit=False)
         like.author = request.user        
 
@@ -92,10 +90,10 @@ class DeletePost(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('list-of-posts') 
 
 
-def my_posts(request, pk):
+def my_account(request, pk):
     """This function is for showing your posts"""
     posts_of_user = Post.objects.filter(author=User.objects.get(pk=pk))
     context = {
         "posts": posts_of_user, 
     }
-    return render(request, "feed/my_posts.html", context)
+    return render(request, "feed/my_account.html", context)

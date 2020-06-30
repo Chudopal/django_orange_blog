@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 # Create your models here.
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Post(models.Model):
@@ -101,3 +103,34 @@ class Like(models.Model):
 
     def __str__(self):
         return self.author
+
+
+class Profile(models.Model):
+    """This id class for a profile of the user"""
+    user = models.OneToOneField(
+        User, 
+        on_delete=models.CASCADE
+    )
+    posts = models.ManyToManyField(
+        'Post',
+        blank=True
+    )
+    bio = models.TextField(
+        max_length=500,
+        blank=True
+    )
+    picture = models.ImageField(
+        upload_to='media/% Y/% m/% d/',
+        default = 'madia/None/no-img.jpg'
+    )
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
