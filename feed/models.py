@@ -120,8 +120,7 @@ class Profile(models.Model):
         blank=True
     )
     picture = models.ImageField(
-        upload_to='media/% Y/% m/% d/',
-        default = 'madia/None/no-img.jpg'
+        blank=True   
     )
 
 
