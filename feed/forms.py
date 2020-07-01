@@ -1,7 +1,6 @@
 
 from django import forms 
-from .models import Comment, Like
-  
+from .models import Comment, Like, Profile  
   
 # creating a form 
 class CommentForm(forms.ModelForm): 
@@ -23,3 +22,14 @@ class LikeForm(forms.ModelForm):
         model = Like
 
         fields = []
+
+    
+class ProfileForm(forms.ModelForm):
+    """This is class for profile form"""
+    
+    class Meta():
+        model = Profile
+        fields = [
+            'picture',
+            'bio'
+        ]

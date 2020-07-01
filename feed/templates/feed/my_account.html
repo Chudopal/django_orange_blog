@@ -4,12 +4,12 @@
 
 <h1> My account </h1>
 
-<img src="{{ picture.url }}" />
+<img src="{{ profile.picture.url }}" />
 
-{% if posts %}
+{% if profile.posts.all %}
 
     <ul>
-        {% for post in posts %}
+        {% for post in profile.posts.all %}
 
             <li>
                 <a href='{% url 'post-detail' post.pk %}'>{{post}}</a> - {{post.date}}

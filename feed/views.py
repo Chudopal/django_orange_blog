@@ -72,9 +72,12 @@ class CreatePost(LoginRequiredMixin, CreateView):
     ]
 
     def form_valid(self, form):
+        profile = Profile.objects.get(user=self.request.user)
         obj = form.save(commit=False)
-        obj.author = self.request.user
+        obj.author = profile
         obj.save()
+        profile.posts.add(obj)
+        profile.save()
         return super(CreatePost, self).form_valid(form)
 
 
@@ -92,10 +95,8 @@ class DeletePost(LoginRequiredMixin, DeleteView):
 
 def my_account(request, pk):
     """This function is for showing your posts"""
-    posts_of_user = Post.objects.filter(author=User.objects.get(pk=pk))
-    picture = Profile.objects.get(user=User.objects.get(pk=pk)).picture
+    profile = Profile.objects.get(user=User.objects.get(pk=pk))
     context = {
-        "posts": posts_of_user, 
-        "picture": picture,
+        "profile": profile,
     }
     return render(request, "feed/my_account.html", context)

@@ -26,7 +26,7 @@ class Post(models.Model):
     )
 
     author = models.ForeignKey(
-        User,
+        'Profile',
         on_delete=models.CASCADE
     )
 
@@ -70,7 +70,7 @@ class Comment(models.Model):
     )
 
     author = models.ForeignKey(
-        User,
+        'Profile',
         blank=True,
         null=True,
         on_delete=models.CASCADE
