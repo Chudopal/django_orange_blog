@@ -8,20 +8,28 @@
 
 <img src="{{ profile.picture.url }}" class="image"/>
 
-{% if profile.posts.all %}
 
-    <ul>
-        {% for post in profile.posts.all %}
+<div class="account-posts">
+    {% if profile.posts.all %}
 
-            <li>
-                <a href='{% url 'post-detail' post.pk %}'>{{post}}</a> - {{post.date}}
-            </li>
+        <ul>
+            {% for post in profile.posts.all %}
 
-        {% endfor %}
-    </ul>
+                <div class="posts-name">
+                    <a href='{% url 'post-detail' post.pk %}'>{{post}}</a>
+                </div>                
+                
+                <div class='posts-date'>
+                    {{post.date}} </br>
+                </div>
 
-{% endif %}
+            
 
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+</div>
 
 <form action="" method="post">
     {% csrf_token %}

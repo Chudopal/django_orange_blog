@@ -19,9 +19,6 @@ a:active {
   color: rgb(252, 163, 17); /* Цвет активных ссылок */
  }
 
-
-
- 
 .title{
   font-size: 600%;
   background-color: rgb(229, 229, 229);
@@ -40,4 +37,23 @@ a:active {
   position: fixed;
   top: 48px;
   z-index:1;
+}
+
+.account-posts{
+  background-color: rgb(229, 229, 229);
+  position: fixed;
+  top: 40%;
+  right: 25%;
+  width: 50%;
+  z-index:2;
+  opacity: 100%;
+}
+
+.posts-name{
+  font-size: 200%;
+}
+
+.posts-date{
+  position: relative;
+  top: 100%;
 }
