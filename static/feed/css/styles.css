@@ -1,6 +1,8 @@
 .menu {
+  font-size: xx-large;
   background-color: rgb(20, 33, 61);
   color: rgb(252, 163, 17);
+  text-align: center;
 }
 
 body {
@@ -9,4 +11,33 @@ body {
 
 a {
  color: rgb(252, 163, 17); /* Цвет ссылок */
+}
+a:visited {
+  color: rgb(252, 163, 17); /* Цвет посещенных ссылок */
+ }
+a:active {
+  color: rgb(252, 163, 17); /* Цвет активных ссылок */
+ }
+
+
+
+ 
+.title{
+  font-size: 600%;
+  background-color: rgb(229, 229, 229);
+  color: rgb(252, 163, 17);
+  position: fixed;
+  top: 20%;
+  right: 20%;
+  text-align: center;
+  width: 60%;
+  z-index:2;
+  opacity: 80%;
+}
+
+.image{
+  width: 100%;
+  position: fixed;
+  top: 48px;
+  z-index:1;
 }

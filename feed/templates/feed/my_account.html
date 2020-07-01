@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h1> My account </h1>
+<h1 class='title' > My account </h1>
 
 <p> {{profile.bio}} </p>
 
-<img src="{{ profile.picture.url }}" />
+<img src="{{ profile.picture.url }}" class="image"/>
 
 {% if profile.posts.all %}
 
@@ -22,10 +22,11 @@
 
 {% endif %}
 
+
 <form action="" method="post">
     {% csrf_token %}
     <table>
-    {{ profile_forms.as_table }}
+    {{ profile_form.as_table }}
     </table>
     <input type="submit" value="Submit" />
     
