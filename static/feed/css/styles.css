@@ -1,0 +1,12 @@
+.menu {
+  background-color: rgb(20, 33, 61);
+  color: rgb(252, 163, 17);
+}
+
+body {
+  background: rgb(229, 229, 229);
+}
+
+a {
+ color: rgb(252, 163, 17); /* Цвет ссылок */
+}
