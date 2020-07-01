@@ -4,7 +4,16 @@
 
 <h1> My account </h1>
 
-<img src="{{ profile.picture.url }}" />
+<p> {{profile.bio}} </p>
+
+
+<div class="img__container">
+    <img src="{{ profile.picture.url }}" class="img-fluid"/>
+    <div class="img__description">
+    <div class="img__header">Заголовок для текста</div>
+    Текст поверх изображения...
+  </div>
+</div>
 
 {% if profile.posts.all %}
 
@@ -19,5 +28,14 @@
     </ul>
 
 {% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ profile_form.as_table }}
+    </table>
+    <input type="submit" value="Submit" />
+    
+</form>
 
 {% endblock %}

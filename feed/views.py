@@ -1,11 +1,15 @@
-from django.shortcuts import render
 from .models import (
     Post,
     Comment,
     Profile
 )
+from .forms import (
+    CommentForm, 
+    LikeForm, 
+    ProfileForm
+)
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .forms import CommentForm, LikeForm
 from django.contrib.auth.models import User
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -77,7 +81,6 @@ class CreatePost(LoginRequiredMixin, CreateView):
         obj.author = profile
         obj.save()
         profile.posts.add(obj)
-        profile.save()
         return super(CreatePost, self).form_valid(form)
 
 
@@ -92,11 +95,18 @@ class DeletePost(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('list-of-posts') 
 
-
+@login_required
 def my_account(request, pk):
     """This function is for showing your posts"""
-    profile = Profile.objects.get(user=User.objects.get(pk=pk))
+    profile = Profile.objects.get(user=request.user)
+    profile_form = ProfileForm(request.POST or None)
+
+    if profile_form.is_valid():
+        obj = profile_form.save(commit=False)
+        
     context = {
         "profile": profile,
+        'profile_form': profile_form,
     }
+    
     return render(request, "feed/my_account.html", context)
