@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class='title' > My account </h1>
+<h1 class='title' > {{ profile.user.get_username }} </h1>
 
 <p> {{profile.bio}} </p>
 
@@ -12,18 +12,15 @@
 <div class="account-posts">
     {% if profile.posts.all %}
 
-        <ul>
+        <ul >
             {% for post in profile.posts.all %}
+                    <div class="posts-name">
+                        <a href='{% url 'post-detail' post.pk %}'>{{post}}</a>
+                    </div>                
 
-                <div class="posts-name">
-                    <a href='{% url 'post-detail' post.pk %}'>{{post}}</a>
-                </div>                
-                
-                <div class='posts-date'>
-                    {{post.date}} </br>
-                </div>
-
-            
+                    <div class='posts-date'>
+                        {{post.date}} </br>
+                    </div>           
 
             {% endfor %}
         </ul>
