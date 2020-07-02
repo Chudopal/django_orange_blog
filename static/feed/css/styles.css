@@ -76,9 +76,12 @@ a:active {
 }
 
 .avatar{
-  width: 300px;
   position: relative;
-  top: -350px;
+  top: -330px;
+  width: 260px;
+  height: 260px;
+  overflow: hidden;
+  border-radius: 50%;
   border: 3px solid rgb(229, 229, 229);
 }
 
