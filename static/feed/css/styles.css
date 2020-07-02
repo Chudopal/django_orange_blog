@@ -6,7 +6,7 @@
 }
 
 body {
-  background: rgb(229, 229, 229);
+  background: rgb(39, 39, 39);
 }
 
 a {
@@ -21,9 +21,9 @@ a:active {
 
 .title{
   font-size: 600%;
-  color: rgb(252, 163, 17);
+  color: rgb(255, 157, 0);
   position: fixed;
-  top: 30%;
+  top: 32%;
   right: 20%;
   text-align: center;
   width: 60%;
@@ -36,7 +36,7 @@ a:active {
   background-color: rgb(229, 229, 229);
   color: rgb(229, 229, 229);
   position: fixed;
-  top: 30%;
+  top: 32%;
   right: 20%;
   text-align: center;
   width: 60%;
@@ -54,7 +54,7 @@ a:active {
 .account-posts{
   background-color: rgb(229, 229, 229);
   position: fixed;
-  top: 45%;
+  top: 52%;
   right: 25%;
   width: 50%;
   z-index:2;
@@ -67,4 +67,10 @@ a:active {
 .posts-date{
   position: relative;
   top: 100%;
+}
+
+.avatar{
+  width: 300px;
+  position: relative;
+  top: -360px;
 }

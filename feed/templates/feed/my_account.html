@@ -2,9 +2,21 @@
 
 {% block content %}
 
-<h1 class='title' > {{ profile.user.get_username }} </h1>
+
+<h1 class='title' > 
+    {{ profile.user.get_username }} 
+    <img src="{{ profile.avatar.url }}" class="rounded-circle mx-auto d-block avatar"/>
+</h1>
 <h1 class='title-back'> back </h1>
-<p> {{profile.bio}} </p>
+
+<div class="proporties">
+
+    <a>overwiew</a>
+    <a>posts</a>
+    <a>followers</a>
+
+</div>
+
 
 <img src="{{ profile.picture.url }}" class="image"/>
 
