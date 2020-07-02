@@ -2,53 +2,69 @@
 
 {% block content %}
 
-    <h1> {{ post.name }} </h1>
+    <h1 class="post-name"> {{ post.name }} </h1>
+    
 
-    <h4> Likes: {%if post.likes%} {{post.likes.all.count}} {%else%} 0 {%endif%} </h4>
+    <h3>
+        <a class="author-name" href="{% url 'posts-of-author' post.author.pk %}">  {{ post.author }}</a>
+    </h3>
 
+    </p>
+
+     <h3 class="likes-of-post"> Likes: {%if post.likes%} {{post.likes.all.count}} {%else%} 0 {%endif%} </h3>
 
     <form action="" method="post">
         {% csrf_token %}
         <table>
             {{ form_like.as_table }}
         </table>
-        <input type="submit" value="Like" />
+        <input class="like-button" type="submit" value="Like" />
     
     </form>
 
-    <p>
+
+
+    <dev class="post" style="font-size:20px">
+    <p class="post-body">
         {{ post.body }}
 
     </p>
 
-    <h3>
-        <a href="{% url 'posts-of-author' post.author.pk %}">{{ post.author }}</a>
-    </h3>
+        <dev class="comment">
 
-    <ul>
-        {% for comment in post.comments.all %}
+        <h4 class="leave-the-comment">
+            Comments:
+        </h4>
+        
+        <dev class="comment-form">
+        <ul>
+            {% for comment in post.comments.all %}
 
-         <li>
-            <h4>{{comment.author}}</h4>
-            <p>{{comment.body}}</p> 
-         </li>    
+             <li>
+                <h4>{{comment.author}}</h4>
+                <p>{{comment.body}}</p> 
+             </li>    
 
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
+        </dev>
 
-    <h4>
-        Leave the comment:
-    </h4>
+        <h4 class="leave-the-comment">
+            Leave the comment:
+        </h4>
+        
+
+        <form class="comment-form" action="" method="post">
+            {% csrf_token %}
+            <table>
+                {{ form_comment.body }}
+            </table>
+            <input type="submit" value="Submit" />
+
+        </form>
+        </dev>
     
-    <form action="" method="post">
-        {% csrf_token %}
-        <table>
-            {{ form_comment.as_table }}
-        </table>
-        <input type="submit" value="Submit" />
     
-    </form>
-
-
+    </dev>
 
 {% endblock %}

@@ -105,3 +105,88 @@ a:active {
   position: relative;
   left: 5%;
 }
+
+.post-name{
+  font-size: 400%;
+  color: rgb(255, 157, 0);
+  position: fixed;
+  top: 15%;
+  right: 20%;
+  text-align: center;
+  width: 60%;
+  z-index:2;
+  opacity: 90%;
+  border-radius: 50px;
+}
+
+
+.likes-of-post{
+  color: rgb(255, 157, 0);
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  right: 17%;
+  width: 60%;
+  z-index:2;
+  border-radius: 10px;
+}
+
+.like-button{
+  font: bold 11px Arial;
+  font-size: 20px;
+  background-color: rgb(255, 157, 0);
+  border-top: 1px solid rgb(255, 157, 0);
+  border-right: 1px solid rgb(255, 157, 0);
+  border-bottom: 1px solid rgb(255, 157, 0);
+  border-left: 1px solid rgb(255, 157, 0);
+  color: rgb(39, 39, 39);
+  position: fixed;
+  top: 30%;
+  right: 53%;
+  z-index:2;
+}
+
+.author-name{
+  font-size: 100%;
+  color: rgb(255, 157, 0);
+  position: fixed;
+  top: 24%;
+  right: 20%;
+  text-align: center;
+  width: 60%;
+  z-index:2;
+  opacity: 90%;
+  border-radius: 50px;
+}
+
+.post{
+  background-color: rgb(39, 39, 39);
+  position: absolute;
+  top: 350px;
+  right: 25%;
+  width: 50%;
+  z-index:2;
+  text-align: center;
+}
+
+.post-body{
+  background-color: rgb(229, 229, 229);
+  border-radius: 10px;
+}
+
+
+.leave-the-comment{
+  color: rgb(255, 157, 0);
+  font-size: 40px;
+  text-align: left;
+}
+
+.comment-form{
+  background-color: rgb(229, 229, 229);
+  border-radius: 10px;
+}
+
+.comment{
+  position: relative;
+
+}
