@@ -6,14 +6,20 @@
 
     {% if post_list %}
 
+    <dev class="all-posts">
     <ui>
         {% for post in post_list %}
-            <li>
-                <a href="{% url 'post-detail' post.pk %}"> {{ post.name }} </a>
-            </li>
+            <div class="all-posts-names">
+                <a href="{% url 'post-detail' post.pk %}"> 
+                    <p >{{ post.name}}</p> 
+                </a>
+                    <p class="date">{{post.date}}</p>
+                    <p class="author">{{post.author.user.get_username}}</p>
+            </div>
         {% endfor %}
     </ui>
 
+    </dev>
     {% endif %}
 
 {% endblock %}

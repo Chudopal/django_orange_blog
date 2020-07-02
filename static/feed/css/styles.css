@@ -182,7 +182,6 @@ a:active {
 }
 
 .comment-form{
-  background-color: rgb(229, 229, 229);
   border-radius: 10px;
 }
 
@@ -190,3 +189,25 @@ a:active {
   position: relative;
 
 }
+
+.all-posts{
+  background-color: rgb(229, 229, 229);
+  position: absolute;
+  top: 20%;
+  right: 25%;
+  width: 50%;
+  z-index:2;
+
+  border-radius: 20px;
+}
+
+.all-posts-names{
+  font-size: 35px;
+  width: 90%;
+  position: relative;
+  left: 4%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
