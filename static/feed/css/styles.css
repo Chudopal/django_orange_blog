@@ -3,10 +3,12 @@
   background-color: rgb(39, 39, 39);
   color: rgb(252, 163, 17);
   text-align: center;
+  z-index: 5;
 }
 
 body {
   background: rgb(39, 39, 39);
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -20,7 +22,7 @@ a:active {
  }
 
 .title{
-  font-size: 600%;
+  font-size: 400%;
   color: rgb(255, 157, 0);
   position: fixed;
   top: 32%;
@@ -28,6 +30,7 @@ a:active {
   text-align: center;
   width: 60%;
   z-index:3;
+  padding: 20px;
 }
 
 
@@ -41,7 +44,8 @@ a:active {
   text-align: center;
   width: 60%;
   z-index:2;
-  opacity: 80%;
+  opacity: 90%;
+  border-radius: 50px;
 }
 
 .image{
@@ -58,6 +62,8 @@ a:active {
   right: 25%;
   width: 50%;
   z-index:2;
+
+  border-radius: 20px;
 }
 
 .posts-name{
@@ -72,5 +78,30 @@ a:active {
 .avatar{
   width: 300px;
   position: relative;
-  top: -360px;
+  top: -350px;
+}
+
+.properties{
+  color: rgb(252, 163, 17);
+  background-color: rgb(229, 229, 229);
+  font-size: 30px;
+  text-align: center;
+  position: fixed;
+  top: 45.6%;
+  right: 30%;
+  width: 40%;
+  z-index:3;
+
+  border-radius: 50px;
+}
+
+.overwiew{
+  position: relative;
+  right: 5%;
+}
+
+
+.followers{
+  position: relative;
+  left: 5%;
 }
