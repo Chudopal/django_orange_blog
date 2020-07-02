@@ -82,7 +82,7 @@ a:active {
   border: 3px solid rgb(229, 229, 229);
 }
 
-.properties{
+.properties-back{
   color: rgb(252, 163, 17);
   background-color: rgb(229, 229, 229);
   font-size: 30px;
@@ -93,19 +93,22 @@ a:active {
   width: 40%;
   z-index:3;
 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   border-radius: 50px;
 }
 
-.overwiew{
+.properties{
   position: relative;
-  right: 5%;
+  right: -5%;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
 }
 
-
-.followers{
-  position: relative;
-  left: 5%;
-}
 
 .post-name{
   font-size: 400%;
