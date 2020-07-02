@@ -21,10 +21,22 @@ a:active {
 
 .title{
   font-size: 600%;
-  background-color: rgb(229, 229, 229);
   color: rgb(252, 163, 17);
   position: fixed;
-  top: 20%;
+  top: 30%;
+  right: 20%;
+  text-align: center;
+  width: 60%;
+  z-index:3;
+}
+
+
+.title-back{
+  font-size: 600%;
+  background-color: rgb(229, 229, 229);
+  color: rgb(229, 229, 229);
+  position: fixed;
+  top: 30%;
   right: 20%;
   text-align: center;
   width: 60%;
@@ -42,11 +54,10 @@ a:active {
 .account-posts{
   background-color: rgb(229, 229, 229);
   position: fixed;
-  top: 40%;
+  top: 45%;
   right: 25%;
   width: 50%;
   z-index:2;
-  opacity: 100%;
 }
 
 .posts-name{

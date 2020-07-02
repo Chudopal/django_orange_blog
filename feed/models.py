@@ -122,6 +122,11 @@ class Profile(models.Model):
     picture = models.ImageField(
         blank=True   
     )
+    
+    avatar = models.ImageField(
+        upload_to='avatars/',
+        blank=True   
+    )
 
 
 @receiver(post_save, sender=User)
