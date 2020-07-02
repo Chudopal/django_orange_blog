@@ -6,7 +6,7 @@
     
 
     <h3>
-        <a class="author-name" href="{% url 'posts-of-author' post.author.pk %}">  {{ post.author }}</a>
+        <a class="author-name" href="{% url 'my-posts' post.author.pk %}">  {{ post.author.user.get_username }}</a>
     </h3>
 
     </p>
@@ -36,18 +36,17 @@
             Comments:
         </h4>
         
-        <dev class="comment-form">
         <ul>
             {% for comment in post.comments.all %}
 
-             <li>
-                <h4>{{comment.author}}</h4>
+                <h5 class="leave-the-comment" style="font-size:30px;"> {{comment.author.user.get_username}}: </h5>
+
+            <div class="post-body">>     
                 <p>{{comment.body}}</p> 
-             </li>    
+            </div>
 
             {% endfor %}
         </ul>
-        </dev>
 
         <h4 class="leave-the-comment">
             Leave the comment:

@@ -34,7 +34,7 @@ def post_detail_view(request, pk):
     post = Post.objects.get(pk=pk)
     if form_comment.is_valid():
         comment = form_comment.save(commit=False)
-        comment.author = request.user
+        comment.author = Profile.objects.get(user=request.user)
         comment.save()
         post.comments.add(comment)
 
