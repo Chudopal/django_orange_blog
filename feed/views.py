@@ -16,6 +16,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
+from .forms import PostForm
 # Create your views here.
 
 
@@ -69,11 +70,8 @@ class AuthorListView(generic.ListView):
 
 class CreatePost(LoginRequiredMixin, CreateView):
     """This class allows to create new post"""
+    form_class = PostForm
     model = Post
-    fields = [
-        'name',
-        'body',
-    ]
 
     def form_valid(self, form):
         profile = Profile.objects.get(user=self.request.user)
