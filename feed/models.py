@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from tinymce.models import HTMLField
+
 
 class Post(models.Model):
     """The model of post
@@ -20,10 +22,7 @@ class Post(models.Model):
         help_text="Enter the name of your post"
     )
 
-    body = models.TextField(
-        max_length=2000,
-        help_text="Enter the content of your post"
-    )
+    body = HTMLField()
 
     author = models.ForeignKey(
         'Profile',
@@ -39,6 +38,8 @@ class Post(models.Model):
         'Like',
         blank=True
     )
+
+    is_pinned = models.BooleanField(default=False)
 
     date = models.DateField(auto_now=True)
 

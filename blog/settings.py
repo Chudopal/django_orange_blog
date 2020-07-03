@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'feed.apps.FeedConfig'
+    
+    'tinymce',
+
+    'feed.apps.FeedConfig',
 ]
 
 MIDDLEWARE = [
