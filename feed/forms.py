@@ -12,7 +12,7 @@ from tinymce.widgets import TinyMCE
 class CommentForm(forms.ModelForm): 
     
     body = forms.CharField(
-        widget=TinyMCE(
+        widget=forms.Textarea(
             attrs={'required':False, 'cols':78, 'rows':3}
         )
     )
@@ -49,6 +49,13 @@ class ProfileForm(forms.ModelForm):
 
 class PostForm(forms.ModelForm):
     """This is the form for creating posts"""
+    
+    name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={"size":'20'}
+        )
+    )
+    
     body = forms.CharField(
         widget=TinyMCE(
             attrs={'required':False, 'cols':80, 'rows':10}
