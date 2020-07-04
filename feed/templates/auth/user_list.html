@@ -7,7 +7,7 @@
 <ul>
     {% for user in user_list %}
         <div class="all-posts-names">
-            <a href="{% url 'my-posts' user.pk %}">{{user}}</a>
+            <a href="{% url 'account' user.pk %}">{{user}}</a>
         </div>
     {% endfor %}
 </ul>

@@ -23,6 +23,8 @@ class Post(models.Model):
         help_text="Enter the name of your post"
     )
 
+    is_pinned = models.BooleanField(default=False)
+
     body = HTMLField()
 
     author = models.ForeignKey(

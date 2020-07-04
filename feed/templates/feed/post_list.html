@@ -14,7 +14,7 @@
                     <p >{{ post.name}}</p> 
                 </a>
                     <p class="date">{{post.date}}</p>
-                    <p class="author">{{post.author.user.get_username}}</p>
+                    <a class="author" href="{% url 'account'  post.author.pk%}">{{post.author.user.get_username}}</a>
             </div>
         {% endfor %}
     </ui>
