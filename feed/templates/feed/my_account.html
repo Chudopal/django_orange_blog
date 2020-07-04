@@ -22,8 +22,8 @@
 
 
 <div class="account-posts ">
+    {% block posts %}
     {% if profile.posts.all %}
-
         <ul >
             {% for post in profile.posts.all %}
                     <div class="posts-name">
@@ -38,6 +38,7 @@
         </ul>
 
     {% endif %}
+    {%endblock%}
 </div>
 
 {% endblock %}
