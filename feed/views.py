@@ -56,7 +56,7 @@ def post_detail_view(request, pk):
 
 
 def posts_of_user(request, pk):
-    posts_of_user = Post.objects.filter(author=User.objects.get(pk=pk))
+    posts_of_user = Post.objects.filter(author=Profile.objects.get(pk=pk))
     context = {
         "posts": posts_of_user,
     }
