@@ -56,9 +56,9 @@ def post_detail_view(request, pk):
 
 
 def posts_of_user(request, pk):
-    posts_of_user = Post.objects.filter(author=Profile.objects.get(pk=pk))
+    profile = Profile.objects.get(pk=pk)
     context = {
-        "posts": posts_of_user,
+        "profile": profile,
     }
     return render(request, 'feed/posts_of_user.html', context)
 
@@ -97,14 +97,9 @@ class DeletePost(LoginRequiredMixin, DeleteView):
 def my_account(request, pk):
     """This function is for showing your posts"""
     profile = Profile.objects.get(user=request.user)
-    profile_form = ProfileForm(request.POST or None)
-
-    if profile_form.is_valid():
-        obj = profile_form.save(commit=False)
         
     context = {
         "profile": profile,
-        'profile_form': profile_form,
     }
     
     return render(request, "feed/my_account.html", context)
