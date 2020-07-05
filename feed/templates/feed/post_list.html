@@ -13,7 +13,7 @@
                 <a href="{% url 'post-detail' post.pk %}"> 
                     <p >{{ post.name}}</p> 
                 </a>
-                    <p class="date">{{post.date}}</p>
+                    {%if post.likes%} {{post.likes.all.count}} {%else%} 0 {%endif%} 
                     <a class="author" href="{% url 'account'  post.author.pk%}">{{post.author.user.get_username}}</a>
             </div>
         {% endfor %}

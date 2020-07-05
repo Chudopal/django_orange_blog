@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if profile_list %}
+<div class="all-posts">
+<ul>
+    {% for profile in profile_list %}
+        <div class="all-posts-names">
+            <a href="{% url 'account' profile.pk %}">{{profile.user.get_username}}</a>
+            {%if profile.posts%} {{profile.posts.all.count}} {%else%} 0 {%endif%}
+        
+        </div>
+    {% endfor %}
+</ul>
+</div>
+{% endif %}
+
+{% endblock %}

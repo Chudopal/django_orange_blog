@@ -65,7 +65,7 @@ def posts_of_user(request, pk):
 
 class AuthorListView(generic.ListView):
     """This class allows to get a list of authors """
-    model = User
+    model = Profile
 
 
 class CreatePost(LoginRequiredMixin, CreateView):
