@@ -217,3 +217,18 @@ a:active {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.orange-color{
+  color: rgb(255, 157, 0);
+  font-size: 20px;
+}
+
+.login{
+  background-color: rgb(51, 50, 50);
+  position: absolute;
+  top: 150px;
+  right: 42%;
+  width: 320px;
+  height: 180px;
+  border-radius: 10px;
+}
