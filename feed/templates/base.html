@@ -28,8 +28,8 @@
   
         {% if user.is_authenticated %}
           <a class="navbar-brand" href='{% url "create-post" %}'>New post</a>
-          <a class="navbar-brand" href='{% url 'account' user.pk %}'> My account</a>
-          <a class="navbar-brand">Edit account</a>
+          <a class="navbar-brand" href='{% url "account" user.pk %}'> My account</a>
+          <a class="navbar-brand" href='{% url "update-account" user.pk %}'>Edit account</a>
           <a class="navbar-brand" href="{% url 'logout'%}?next={% url 'list-of-authors' %}">Logout</a> 
         {% else %}
           <a class="navbar-brand" href="{% url 'login'%}?next={% url 'list-of-authors' %}">Login</a>  
