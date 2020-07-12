@@ -6,7 +6,8 @@ from .models import (
 from .forms import (
     CommentForm, 
     LikeForm, 
-    ProfileForm
+    ProfileForm,
+    SignUpForm
 )
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -17,8 +18,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from .forms import PostForm
-from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
+from django.contrib import messages
+from django.shortcuts import redirect
  
 # Create your views here.
 
@@ -96,19 +97,35 @@ class DeletePost(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('list-of-posts') 
 
+
 @login_required
 def my_account(request, pk):
     """This function is for showing your posts"""
-    profile = Profile.objects.get(user=request.user)
-        
+    profile = Profile.objects.get(pk=pk)
+
     context = {
         "profile": profile,
     }
-    
+
     return render(request, "feed/my_account.html", context)
 
 class SignUpView(generic.CreateView):
     """Class for users registration"""
-    form_class = UserCreationForm
+    form_class = SignUpForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
+
+
+def register(request):
+    """function for creating new user"""
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Account created successfully')
+            return redirect('login')
+ 
+    else:
+        form = SignUpForm()
+ 
+    return render(request, 'signup.html', {'form': form})
