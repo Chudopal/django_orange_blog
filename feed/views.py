@@ -115,3 +115,11 @@ class SignUpView(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
+class UpdatePost(LoginRequiredMixin, UpdateView):
+    """This class allows to update your post"""
+    model = Profile
+    fields = (
+        "bio",
+        "picture",
+        "avatar",
+    )
