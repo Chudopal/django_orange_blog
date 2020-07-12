@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="login">
+<div class="login" style="width:280px; height:350px; left:820px;">
 {% if form.errors %}
 <p class="orange-color">Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -10,13 +10,15 @@
 
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
-<table>
-    {{form.username}}
-    {{form.password1}}
-    {{form.password2}}
-</table>
+<div style="position:relative; left:15px;">
+    <table>
+        <div class="orange-color"> Enter your name: <p>{{form.username}}</p> </div>
+        <div class="orange-color"> Enter password: <p>{{form.password1}}</p></div>
+        <div class="orange-color"> Confirm password: <p>{{form.password2}}</p></div>
+    </table>
+</div>
 
-<input class="like-button" style="position: relative; top:10px; right:-40%;" type="submit" value="login" />
+<input class="like-button" style="position: relative; top:10px; right:-38%;" type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 </div>
