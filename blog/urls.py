@@ -30,13 +30,6 @@ urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
 ]
 
-urlpatterns += [
-    path(
-        'accounts/', 
-        include('django_registration.backends.activation.urls'), 
-        name="register"
-    ),
-]
 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

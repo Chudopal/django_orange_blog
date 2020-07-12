@@ -30,10 +30,10 @@
           <a class="navbar-brand" href='{% url "create-post" %}'>New post</a>
           <a class="navbar-brand" href='{% url 'account' user.pk %}'> My account</a>
           <a class="navbar-brand">Edit account</a>
-          <a class="navbar-brand" href="{% url 'logout'%}?next={{request.path}}">Logout</a> 
+          <a class="navbar-brand" href="{% url 'logout'%}?next={% url 'list-of-authors' %}">Logout</a> 
         {% else %}
-          <a class="navbar-brand" href="{% url 'login'%}?next={{request.path}}">Login</a>  
-          <a class="navbar-brand" href="{% url 'django_registration_register'%}?next={{request.path}}">Register</a>  
+          <a class="navbar-brand" href="{% url 'login'%}?next={% url 'list-of-authors' %}">Login</a>  
+          <a class="navbar-brand" href="{% url 'signup'%}?next={% url 'list-of-authors' %}">Register</a>  
            
         {% endif %} 
       {%endblock%}

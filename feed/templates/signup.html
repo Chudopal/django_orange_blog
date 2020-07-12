@@ -7,19 +7,13 @@
 <p class="orange-color">Your username and password didn't match. Please try again.</p>
 {% endif %}
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p class="orange-color">Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p class="orange-color">Please login to see this page.</p>
-    {% endif %}
-{% endif %}
 
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 <table>
-    {{form.as_table}}
+    {{form.username}}
+    {{form.password1}}
+    {{form.password2}}
 </table>
 
 <input class="like-button" style="position: relative; top:10px; right:-40%;" type="submit" value="login" />

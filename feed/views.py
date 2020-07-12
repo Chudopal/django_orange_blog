@@ -17,6 +17,9 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from .forms import PostForm
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+ 
 # Create your views here.
 
 
@@ -103,3 +106,9 @@ def my_account(request, pk):
     }
     
     return render(request, "feed/my_account.html", context)
+
+class SignUpView(generic.CreateView):
+    """Class for users registration"""
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'signup.html'
