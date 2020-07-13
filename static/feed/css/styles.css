@@ -232,3 +232,18 @@ a:active {
   height: 180px;
   border-radius: 10px;
 }
+
+.settings{
+  background-color: rgb(229, 229, 229);
+  position: absolute;
+  width: 50%;
+  height: 90%;
+  border-radius: 10px;
+  left: 25%;
+}
+
+.elements{
+  position: relative;
+  left: 25%;
+  top: 5%;
+}

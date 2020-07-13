@@ -136,6 +136,10 @@ class Profile(models.Model):
         null=True
     )
 
+    def get_absolute_url(self):
+        """Returns the url to access a particular author instance."""
+        return reverse('account', args=[str(self.id)])
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

@@ -115,7 +115,7 @@ class SignUpView(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
-class UpdatePost(LoginRequiredMixin, UpdateView):
+class UpdateUser(LoginRequiredMixin, UpdateView):
     """This class allows to update your post"""
     model = Profile
     fields = (
@@ -123,3 +123,10 @@ class UpdatePost(LoginRequiredMixin, UpdateView):
         "picture",
         "avatar",
     )
+
+    def form_valid(self, form):
+        self.object.picture = self.request.FILES['picture']
+        self.object.avatar = self.request.FILES['avatar']
+        self.object.save()
+
+        return super().form_valid(form)

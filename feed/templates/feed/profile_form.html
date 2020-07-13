@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {%block content%}
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
-    {{ form.as_table }}
-</table>
-</form>
+<div class="settings">
+    <div class="elements">
+        <form method="post" action="{% url 'update-account' user.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+            <input class="like-button" style="position: relative; top:10px; left:21%;" type="submit" value="submit" />
+        </form>
+    </div>
+</div>
 {%endblock%}
