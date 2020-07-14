@@ -47,7 +47,10 @@ class Post(models.Model):
     date = models.DateField(auto_now=True)
 
     def get_absolute_url(self):
-        return reverse("post-detail", kwargs={"pk": self.pk})
+        return reverse(
+            "post-detail", 
+            kwargs={"pk": self.pk}
+        )
 
     class Meta():
         ordering = ["date"]

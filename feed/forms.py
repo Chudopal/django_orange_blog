@@ -64,9 +64,15 @@ class PostForm(forms.ModelForm):
         )
     )
 
+    is_pinned = forms.BooleanField()
+
     class Meta:
         model = Post
-        fields = ('name', 'body')
+        fields = (
+            'name', 
+            'body', 
+            'is_pinned',
+        )
 
 
 class SignUpForm(UserCreationForm):

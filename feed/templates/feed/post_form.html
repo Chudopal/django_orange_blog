@@ -4,9 +4,21 @@
 <form class="post" style="position:absolute; top: 200px;" action="" method="post">
     {% csrf_token %}
     <table>
-    <div  style="position: relative; top: -40px;" > {{ form.name }}</div>
+    
+    <div  style="position: relative; top: -40px;" > 
+        <div class="orange-color"> Title: </div>
+        {{ form.name }}
+    </div>
+    <div class="orange-color"> Body: </div>
     {{ form.body }}
+    
+    <div class="orange-color"> Pin it in your account:
+    {{ form.is_pinned }}
+     </div>
+    
+    
     </table>
+
     <input class="like-button" style="position: relative; top: 40px; right:0px;%" type="submit" value="Submit" />
 </form>
 {% endblock %}
