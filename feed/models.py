@@ -119,6 +119,11 @@ class Profile(models.Model):
         'Post',
         blank=True
     )
+    followers=models.ManyToManyField(
+        'Profile',
+        null=True,
+        blank=True
+    )
     bio = models.TextField(
         max_length=500,
         blank=True

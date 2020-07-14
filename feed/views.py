@@ -123,7 +123,7 @@ class UpdateUser(LoginRequiredMixin, UpdateView):
         "picture",
         "avatar",
     )
-
+    
     def form_valid(self, form):
         self.object.picture = self.request.FILES['picture']
         self.object.avatar = self.request.FILES['avatar']
