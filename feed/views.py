@@ -105,6 +105,7 @@ def my_account(request, pk):
 
     context = {
         "profile": profile,
+        "posts": profile.posts.filter(is_pinned=True)
     }
 
     return render(request, "feed/my_account.html", context)
