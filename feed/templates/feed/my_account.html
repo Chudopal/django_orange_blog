@@ -18,12 +18,10 @@
 </div>
 
 {% if user.id != profile.id %}
-        <div style="position: absolute; left:400px; ">
-        <div class="like-button" style="position: relative; top: 365px; left: 527px;">
-            follow
+        <div class="follow-button" >
+            follow the user
         </div>
-        </div>
-
+        
 {% endif %}
 
 <img src="{{ profile.picture.url }}" class="image"/>
