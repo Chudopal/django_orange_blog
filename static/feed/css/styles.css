@@ -247,3 +247,12 @@ a:active {
   left: 25%;
   top: 5%;
 }
+
+.follow-button{
+  position: relative;
+  right: -5%;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

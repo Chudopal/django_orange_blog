@@ -12,11 +12,19 @@
 <div class="properties-back">
     <div class="properties">
     <a href="{% url 'account' profile.pk%}">overview</a>
-    <a class="posts" href="{% url 'posts-of-author' profile.pk%}">posts</a>
+    <a class="posts" href="{% url 'posts-of-author' profile.pk%}">posts ({%if profile.posts%} {{profile.posts.all.count}} {%else%} 0 {%endif%})</a>
     <a class="followers">followers</a>
     </div>
 </div>
 
+{% if user.id != profile.id %}
+        <div style="position: absolute; left:400px; ">
+        <div class="like-button" style="position: relative; top: 365px; left: 527px;">
+            follow
+        </div>
+        </div>
+
+{% endif %}
 
 <img src="{{ profile.picture.url }}" class="image"/>
 
