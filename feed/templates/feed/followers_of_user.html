@@ -1,0 +1,21 @@
+{% extends 'feed/my_account.html' %}
+
+{% block posts %}
+
+    {% if profile.posts.all %}
+        <ul >
+            {% for post in profile.posts.all %}
+                    <div class="posts-name">
+                        <a href='{% url 'post-detail' post.pk %}'>{{post}}</a>
+                    </div>                
+
+                    <div class='posts-date'>
+                        {{post.date}} </br>
+                    </div>           
+
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+{% endblock %}

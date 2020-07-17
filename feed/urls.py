@@ -6,6 +6,7 @@ urlpatterns = [
     path('authors/', views.AuthorListView.as_view(), name="list-of-authors"),
     path('<int:pk>/', views.post_detail_view, name='post-detail'),
     path('authors/<int:pk>/posts', views.posts_of_user, name="posts-of-author"),
+    path('authors/<int:pk>/followers', views.followers_of_user, name="followers-of-user"),
     path('authors/<int:pk>', views.my_account, name='account'),
     path('authors/<int:pk>/update', views.UpdateUser.as_view(), name='update-account'),
     path('posts/create/', views.CreatePost.as_view(), name='create-post'),

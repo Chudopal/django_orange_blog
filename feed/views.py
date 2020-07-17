@@ -66,6 +66,12 @@ def posts_of_user(request, pk):
     }
     return render(request, 'feed/posts_of_user.html', context)
 
+def followers_of_user(request, pk):
+    profile = Profile.objects.get(pk=pk)
+    context = {
+        "profile": profile,
+    }
+    return render(request, 'feed/followers_of_user.html', context)
 
 class AuthorListView(generic.ListView):
     """This class allows to get a list of authors """
