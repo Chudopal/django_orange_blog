@@ -122,11 +122,6 @@ class Profile(models.Model):
         'Post',
         blank=True
     )
-    followers=models.ManyToManyField(
-        'Profile',
-        null=True,
-        blank=True
-    )
     bio = models.TextField(
         max_length=500,
         blank=True
@@ -158,3 +153,17 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class ProfileFollowing(models.Model):
+    """This is class for the following systeme"""
+    followers_id = models.ForeignKey(
+        "Prifile",
+        blank=True,
+        null=True
+    )
+    following_id = models.ForeignKey(
+        "Profile",
+        null=True,
+        blank=True
+    )
