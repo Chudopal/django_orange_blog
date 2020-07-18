@@ -155,15 +155,22 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
-class ProfileFollowing(models.Model):
+class ProfileFollowers(models.Model):
     """This is class for the following systeme"""
-    followers_id = models.ForeignKey(
-        "Prifile",
+    user_id = models.ForeignKey(
+        "Profile",
+        related_name="following",
+        on_delete=models.CASCADE,
         blank=True,
         null=True
     )
-    following_id = models.ForeignKey(
+    followers_id = models.ForeignKey(
         "Profile",
-        null=True,
-        blank=True
+        on_delete=models.CASCADE,
+        related_name="followers",
+        blank=True,
+        null=True
+    )
+    following_date = models.DateField(
+        auto_now_add=True
     )
