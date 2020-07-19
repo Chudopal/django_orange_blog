@@ -13,7 +13,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from .forms import PostForm
-#from django.contrib import messages
 from django.shortcuts import redirect
  
 # Create your views here.
@@ -51,8 +50,7 @@ def post_detail_view(request, pk):
     context['post'] = post
     context['form_comment'] = form_comment
     context['form_like'] = form_like
-    return render(request, 'feed/post_detail.html', context)
-
+    return render(request, 'posts/post_detail.html', context)
 
 
 class CreatePost(LoginRequiredMixin, CreateView):
@@ -65,7 +63,6 @@ class CreatePost(LoginRequiredMixin, CreateView):
         obj = form.save(commit=False)
         obj.author = profile
         obj.save()
-        profile.posts.add(obj)
         return super(CreatePost, self).form_valid(form)
 
 
