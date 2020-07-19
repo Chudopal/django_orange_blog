@@ -4,6 +4,7 @@ from .forms import (
     SignUpForm,
     ProfileForm
     )
+from actions.forms import FollowForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.decorators import login_required
@@ -16,7 +17,7 @@ def posts_of_user(request, pk):
     context = {
         "profile": profile,
     }
-    return render(request, 'feed/posts_of_user.html', context)
+    return render(request, 'authors/posts_of_user.html', context)
 
 
 def followers_of_user(request, pk):
@@ -24,7 +25,7 @@ def followers_of_user(request, pk):
     context = {
         "profile": profile,
     }
-    return render(request, 'feed/followers_of_user.html', context)
+    return render(request, 'authors/followers_of_user.html', context)
 
 
 class AuthorListView(generic.ListView):
@@ -36,6 +37,10 @@ class AuthorListView(generic.ListView):
 def my_account(request, pk):
     """This function is for showing your posts"""
     profile = Profile.objects.get(pk=pk)
+    folow_form = FollowForm(request.POST or None)
+    if folow_form.is_valid():
+        follower = folow_form.save(commit=False)
+
     context = {
         "profile": profile,
         "posts": profile.post_set.all().filter(is_pinned=True)
