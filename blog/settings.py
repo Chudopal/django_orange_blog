@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     
     'tinymce',
 
-    'feed.apps.FeedConfig',
+    'posts',
+    'actions',
+    'authors',
 ]
 
 MIDDLEWARE = [
@@ -55,11 +57,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'blog.urls'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+            TEMPLATE_DIR,
+        ],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -135,14 +141,3 @@ STATICFILES_DIRS = [
 ]
 
 ACCOUNT_ACTIVATION_DAYS = 7 # кол-во дней для хранения кода активации
-
-'''
-# для отправки кода активации
-AUTH_USER_EMAIL_UNIQUE = True
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
-DEFAULT_FROM_EMAIL = 'info@google.ru'
-'''
