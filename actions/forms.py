@@ -2,6 +2,7 @@ from django import forms
 from .models import (
     Comment, 
     Like,
+    Follower,
 )
 
 class CommentForm(forms.ModelForm): 
@@ -24,7 +25,20 @@ class CommentForm(forms.ModelForm):
 
 
 class LikeForm(forms.ModelForm):
+    """Class for like
+    This class allows to like posts
+    """
 
     class Meta:
         model = Like
+        fields = []
+
+
+class FollowForm(forms.ModelForm):
+    """Followers form class
+    This class allows to follow other users
+    """
+
+    class Meta:
+        model = Follower
         fields = []

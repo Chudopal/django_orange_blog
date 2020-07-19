@@ -36,8 +36,6 @@ class AuthorListView(generic.ListView):
 def my_account(request, pk):
     """This function is for showing your posts"""
     profile = Profile.objects.get(pk=pk)
-    print("HERRRRRRRRRRRRRRRR")
-    print(dir(profile))
     context = {
         "profile": profile,
         "posts": profile.post_set.all().filter(is_pinned=True)
