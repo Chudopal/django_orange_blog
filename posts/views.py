@@ -39,7 +39,7 @@ def post_detail_view(request, pk):
 
     if form_like.is_valid():
         like = form_like.save(commit=False)
-        like.author = request.user        
+        like.author = Profile.objects.get(user=request.user)        
 
         if (post.likes.filter(author=like.author).exists()):
             post.likes.filter(author=like.author).delete()

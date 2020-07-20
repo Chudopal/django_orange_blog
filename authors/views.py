@@ -38,8 +38,6 @@ def my_account(request, pk):
     """This function is for showing your posts"""
     profile = Profile.objects.get(pk=pk)
     follow_form = FollowForm(request.POST or None)
-    print("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-    print(profile.followers)
     if follow_form.is_valid():
         follower = follow_form.save(commit=False)
         if not profile.followers.filter(
