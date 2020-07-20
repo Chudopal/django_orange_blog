@@ -19,7 +19,17 @@
 
 {% if user.id != profile.id %}
         <div class="follow-button" >
-            follow the user
+
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <table>
+                    {{ follow_form.as_table }}
+                </table>
+                <input type="submit" value="follow the user" />
+
+            </form>
+
         </div>
         
 {% endif %}

@@ -19,14 +19,14 @@ class Like(models.Model):
 
 class Follower(models.Model):
     """This is class for the following systeme"""
-    user_id = models.ForeignKey(
+    user = models.ForeignKey(
         Profile,
         related_name="following",
         on_delete=models.CASCADE,
         blank=True,
         null=True
     )
-    followers_id = models.ForeignKey(
+    follower = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
         related_name="followers",

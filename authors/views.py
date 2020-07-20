@@ -37,13 +37,17 @@ class AuthorListView(generic.ListView):
 def my_account(request, pk):
     """This function is for showing your posts"""
     profile = Profile.objects.get(pk=pk)
-    folow_form = FollowForm(request.POST or None)
-    if folow_form.is_valid():
-        follower = folow_form.save(commit=False)
+    follow_form = FollowForm(request.POST or None)
+    if follow_form.is_valid():
+        follower = follow_form.save(commit=False)
+        follower.follower = Profile.objects.get(user=request.user)
+        follower.user = Profile.objects.get(pk=pk)
+        follower.save()
 
     context = {
         "profile": profile,
-        "posts": profile.post_set.all().filter(is_pinned=True)
+        "posts": profile.post_set.all().filter(is_pinned=True),
+        "follow_form": follow_form,
     }
 
     return render(request, "authors/my_account.html", context)
