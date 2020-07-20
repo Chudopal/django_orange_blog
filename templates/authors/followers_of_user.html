@@ -1,18 +1,13 @@
-{% extends 'feed/my_account.html' %}
+{% extends 'authors/my_account.html' %}
 
 {% block posts %}
 
-    {% if profile.posts.all %}
+    {% if profile.followers.all %}
         <ul >
-            {% for post in profile.posts.all %}
+            {% for follower in profile.followers.all %}
                     <div class="posts-name">
-                        <a href='{% url 'post-detail' post.pk %}'>{{post}}</a>
+                        <a href="{% url 'account' follower.follower.pk %}">{{follower.user.user.get_username}}</a>
                     </div>                
-
-                    <div class='posts-date'>
-                        {{post.date}} </br>
-                    </div>           
-
             {% endfor %}
         </ul>
 

@@ -13,7 +13,7 @@
     <div class="properties">
     <a href="{% url 'account' profile.pk%}">overview</a>
     <a class="posts" href="{% url 'posts-of-author' profile.pk%}">posts ({%if profile.post_set%} {{profile.post_set.all.count}} {%else%} 0 {%endif%})</a>
-    <a class="followers">followers ({%if profile.followers%} {{profile.followers.all.count}} {%else%} 0 {%endif%})</a>
+    <a class="followers" href="{% url 'followers-of-user' profile.pk%}">followers ({%if profile.followers%} {{profile.followers.all.count}} {%else%} 0 {%endif%})</a>
     </div>
 </div>
 
