@@ -38,11 +38,25 @@ def my_account(request, pk):
     """This function is for showing your posts"""
     profile = Profile.objects.get(pk=pk)
     follow_form = FollowForm(request.POST or None)
+    print("HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+    print(profile.followers)
     if follow_form.is_valid():
         follower = follow_form.save(commit=False)
-        follower.follower = Profile.objects.get(user=request.user)
-        follower.user = Profile.objects.get(pk=pk)
-        follower.save()
+        if not profile.followers.filter(
+                user=Profile.objects.get(
+                    user=request.user
+                    )
+                ).exists():
+            follower.user = Profile.objects.get(user=request.user)
+            follower.follower = profile
+            follower.save()
+        else:
+            profile.followers.filter(
+                user=Profile.objects.get(
+                    user=request.user
+                    )
+                ).delete()
+
 
     context = {
         "profile": profile,
