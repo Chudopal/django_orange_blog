@@ -14,8 +14,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from .forms import PostForm
 from django.shortcuts import redirect
- 
-# Create your views here.
 
 
 class PostsListView(generic.ListView):

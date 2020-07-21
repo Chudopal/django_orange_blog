@@ -55,7 +55,6 @@ def my_account(request, pk):
                     )
                 ).delete()
 
-
     context = {
         "profile": profile,
         "posts": profile.post_set.all().filter(is_pinned=True),
@@ -68,7 +67,7 @@ def my_account(request, pk):
 class SignUpView(generic.CreateView):
     """Class for users registration"""
     form_class = SignUpForm
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('list-of-posts')
     template_name = 'signup.html'
 
 
